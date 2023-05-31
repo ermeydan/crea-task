@@ -67,7 +67,7 @@ export function LayoutHeader() {
   return (
     <Header height={60} mb={10}>
       <Container className={classes.header}>
-        <CreaLogo />
+        <CreaLogo height={35} />
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
