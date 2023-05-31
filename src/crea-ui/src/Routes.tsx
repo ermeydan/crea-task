@@ -12,7 +12,6 @@ export function RouteProviders() {
         <Route path="/" element={<Navigate to="/login" replace={true} />} />
         <Route path="/login" element={<PublicRoute component={Login} />} />
 
-
         <Route path="/dashboard">
           <Route element={<LayoutDashboard />}>
             <Route index={true} element={<Dashboard />} />

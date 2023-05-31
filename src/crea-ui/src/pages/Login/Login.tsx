@@ -15,9 +15,7 @@ export default function Login() {
       <Center className="login-card-container">
         <div className="login-card">
           <Stack spacing={10} mb={30}>
-            <Title weight={700}>
-              Bonjour
-            </Title>
+            <Title weight={700}>Bonjour</Title>
             <Text component="p" color="gray" size="md">
               Please login to access the platform.
             </Text>

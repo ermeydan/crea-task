@@ -1,0 +1,38 @@
+$shadow: 0 0 2px rgba(40, 41, 61, 0.04), 0 4px 8px rgba(96, 97, 112, 0.16);
+
+.layout-sidebar {
+  &-navbar {
+    border-right: 1px solid var(--mantine-color-light-4);
+    box-shadow: $shadow;
+    height: initial;
+    padding: 6px 0 6px 6px;
+    position: fixed;
+    top: 0;
+    transition: width 0.3s;
+    transition-timing-function: ease-out;
+    white-space: nowrap;
+    width: 222px;
+
+    &-links {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    &-logo {
+      display: flex;
+      align-items: center;
+      background-color: var(--mantine-color-white);
+      border-bottom: 1px solid var(--mantine-color-light-4);
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+      overflow: hidden;
+
+      &-link {
+        padding-left: 18px;
+        padding-right: 18px;
+        width: 100%;
+      }
+    }
+  }
+}
