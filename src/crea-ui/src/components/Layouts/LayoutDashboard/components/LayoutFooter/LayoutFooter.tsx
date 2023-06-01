@@ -1,8 +1,7 @@
+import './LayoutFooter.scss';
 import { CreaLogoWhite } from '@crea/ui/components';
 import { ActionIcon, Container, Group, Stack, Text } from '@mantine/core';
 import { IconBrandLinkedin } from '@tabler/icons-react';
-
-import './LayoutFooter.scss';
 
 export function LayoutFooter() {
   return (

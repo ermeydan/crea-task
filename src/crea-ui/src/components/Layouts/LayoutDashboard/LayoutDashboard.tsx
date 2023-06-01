@@ -1,7 +1,6 @@
+import { LayoutFooter, LayoutHeader } from './components';
 import { Container } from '@mantine/core';
 import { Outlet } from 'react-router-dom';
-
-import { LayoutFooter, LayoutHeader } from './components';
 
 export function LayoutDashboard() {
   return (
