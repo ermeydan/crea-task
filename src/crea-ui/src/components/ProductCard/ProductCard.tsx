@@ -1,4 +1,4 @@
-import { Card, Image, Text, Group, Badge, createStyles, Center, Button, rem } from '@mantine/core';
+import { Badge, Button, Card, Center, Group, Image, Text, createStyles, rem } from '@mantine/core';
 import { IconGasStation, IconGauge, IconManualGearbox, IconUsers } from '@tabler/icons-react';
 
 const useStyles = createStyles((theme) => ({

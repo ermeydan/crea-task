@@ -1,8 +1,9 @@
-import React from 'react';
 import { MantineProvider } from '@mantine/core';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouteProviders } from './Routes';
 import { Provider } from 'react-redux';
+
+import { RouteProviders } from './Routes';
 import { store } from './store';
 import './styles/index.scss';
 

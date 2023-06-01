@@ -1,4 +1,4 @@
-import { createStyles, Title, Text, Button, Container, Group, rem } from '@mantine/core';
+import { Button, Container, Group, Text, Title, createStyles, rem } from '@mantine/core';
 import { Link } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({

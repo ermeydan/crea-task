@@ -1,6 +1,6 @@
-import { useProductsQuery } from '@crea/ui/services';
-import { Badge, Group, LoadingOverlay, Grid, Title } from '@mantine/core';
 import { ProductCard } from '@crea/ui/components';
+import { useProductsQuery } from '@crea/ui/services';
+import { Badge, Grid, Group, LoadingOverlay, Title } from '@mantine/core';
 
 export default function Products() {
   const { data: products, isLoading } = useProductsQuery();

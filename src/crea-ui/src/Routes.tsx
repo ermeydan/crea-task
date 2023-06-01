@@ -1,6 +1,6 @@
+import { LayoutDashboard, NotFound, ProtectedRoute, PublicRoute } from '@crea/ui/components';
 import loadable from '@loadable/component';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { LayoutDashboard, NotFound, ProtectedRoute, PublicRoute } from '@crea/ui/components';
 
 const Login = loadable(() => import('./pages/Login/Login'));
 const Logout = loadable(() => import('./pages/Logout/Logout'));

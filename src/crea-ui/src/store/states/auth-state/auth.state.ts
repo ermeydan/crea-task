@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
 import { AuthService } from '@crea/ui/services';
+import { createSlice } from '@reduxjs/toolkit';
 import jwt_decode from 'jwt-decode';
 
 const initialState: any = {

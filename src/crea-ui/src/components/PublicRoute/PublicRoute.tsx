@@ -1,5 +1,5 @@
-import React from 'react';
 import { useToken } from '@crea/ui/hooks';
+import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 interface PublicRouteProps {

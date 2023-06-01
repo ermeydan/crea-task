@@ -1,8 +1,9 @@
-import { Button, Header, Container } from '@mantine/core';
-import { useAppDispatch } from '@crea/ui/hooks';
-import { Link, useNavigate } from 'react-router-dom';
-import { logoutAction } from '@crea/ui/store';
 import { CreaLogo } from '@crea/ui/components';
+import { useAppDispatch } from '@crea/ui/hooks';
+import { logoutAction } from '@crea/ui/store';
+import { Button, Container, Header } from '@mantine/core';
+import { Link, useNavigate } from 'react-router-dom';
+
 import './LayoutHeader.scss';
 
 export function LayoutHeader() {
