@@ -12,9 +12,7 @@ const REDUCERS = {
   AuthState: AuthState.reducer,
 };
 
-const MIDDLEWARES = [
-  AuthService.middleware,
-];
+const MIDDLEWARES = [AuthService.middleware];
 
 const SERVICES = {
   [AuthService.reducerPath]: AuthService.reducer,
@@ -27,7 +25,7 @@ const COMBINED_REDUCERS = combineReducers({
 
 const persistedReducer = persistReducer(
   {
-    key: 'vision',
+    key: 'crea',
     version: 1,
     storage,
   },
@@ -38,8 +36,8 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-    serializableCheck: false,
-  }).concat(MIDDLEWARES),
+      serializableCheck: false,
+    }).concat(MIDDLEWARES),
   devTools: process.env.NODE_ENV !== 'production',
 });
 

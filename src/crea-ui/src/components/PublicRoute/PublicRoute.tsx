@@ -5,7 +5,6 @@ import { Navigate, Outlet } from 'react-router-dom';
 interface PublicRouteProps {
   component: React.ComponentType;
   redirect?: string;
-  requiredQueryParams?: string | string[];
 }
 
 /**

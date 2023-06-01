@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AuthService } from '@crea/ui/services';
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode';
 
 const initialState: any = {
   token: null,
@@ -10,7 +10,11 @@ const initialState: any = {
 export const AuthState = createSlice({
   name: 'AuthState',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    logoutAction: (state) => {
+      Object.assign(state, initialState);
+    },
+  },
   extraReducers: (builder) => {
     builder.addMatcher(AuthService.endpoints.login.matchFulfilled, (state, { payload }) => {
       const decoded: any = jwt_decode(payload.token);
@@ -19,3 +23,5 @@ export const AuthState = createSlice({
     });
   },
 });
+
+export const { logoutAction } = AuthState.actions;

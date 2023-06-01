@@ -6,10 +6,7 @@ export const AuthService = createApi({
   reducerPath: 'AuthService',
   baseQuery: axiosBaseQuery(),
   endpoints: (builder) => ({
-    login: builder.mutation<
-      any,
-      { username: string; password: string }
-    >({
+    login: builder.mutation<any, { username: string; password: string }>({
       query: ({ username, password }) => ({
         url: '/login',
         method: HttpMethod.POST,
@@ -22,6 +19,4 @@ export const AuthService = createApi({
   }),
 });
 
-export const {
-  useLoginMutation,
-} = AuthService;
+export const { useLoginMutation } = AuthService;

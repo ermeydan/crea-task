@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { createStyles, Header, Container, Group, rem } from '@mantine/core';
+import { createStyles, Button, Header, Container, Group, rem } from '@mantine/core';
+import { useAppDispatch } from '@crea/ui/hooks';
+import { logoutAction } from '@crea/ui/store';
 import { CreaLogo } from '@crea/ui/components';
 
 const useStyles = createStyles((theme) => ({
@@ -46,6 +48,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export function LayoutHeader() {
+  const dispatch = useAppDispatch();
   const links = [{ link: '/dashboard', label: 'Home' }];
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
@@ -71,6 +74,9 @@ export function LayoutHeader() {
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
+        <Button radius="xl" h={30} onClick={() => dispatch(logoutAction())}>
+          Logout
+        </Button>
       </Container>
     </Header>
   );
