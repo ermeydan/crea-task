@@ -50,7 +50,7 @@ export function NotFound() {
         URL.
       </Text>
       <Group position="center">
-        <Button component={Link} to="/dashboard" variant="subtle" size="md">
+        <Button component={Link} to="/" variant="subtle" size="md">
           Take me back to home page
         </Button>
       </Group>

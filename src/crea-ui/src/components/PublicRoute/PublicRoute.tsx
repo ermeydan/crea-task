@@ -11,7 +11,7 @@ interface PublicRouteProps {
  * To render the component, require the user to be unauthenticated.
  * If the user is authenticated, redirect them to the specified URL.
  */
-export function PublicRoute({ component: Component, redirect = '/dashboard' }: PublicRouteProps) {
+export function PublicRoute({ component: Component, redirect = '/products' }: PublicRouteProps) {
   const auth = useAuth();
 
   if (auth) {

@@ -4,7 +4,7 @@ import { LayoutDashboard, NotFound, ProtectedRoute, PublicRoute } from '@crea/ui
 
 const Login = loadable(() => import('./pages/Login/Login'));
 const Logout = loadable(() => import('./pages/Logout/Logout'));
-const Dashboard = loadable(() => import('./pages/Dashboard/Dashboard'));
+const Products = loadable(() => import('./pages/Products/Products'));
 
 export function RouteProviders() {
   return (
@@ -14,9 +14,9 @@ export function RouteProviders() {
         <Route path="/login" element={<PublicRoute component={Login} />} />
         <Route path="/logout" element={<PublicRoute component={Logout} />} />
 
-        <Route path="/dashboard" element={<ProtectedRoute />}>
+        <Route path="/products" element={<ProtectedRoute />}>
           <Route element={<LayoutDashboard />}>
-            <Route index={true} element={<Dashboard />} />
+            <Route index={true} element={<Products />} />
           </Route>
         </Route>
 
