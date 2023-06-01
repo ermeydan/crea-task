@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '@crea/ui/hooks';
+import { useToken } from '@crea/ui/hooks';
 import { Navigate, Outlet } from 'react-router-dom';
 
 export type ProtectedRouteProps = Partial<{
@@ -15,12 +15,12 @@ export function ProtectedRoute({
   component: Component,
   redirect = '/login',
 }: React.PropsWithChildren<ProtectedRouteProps>) {
-  const auth = useAuth();
+  const token = useToken();
 
   /*
    * If token doesn't exist, redirect to /login by default
    */
-  if (!auth) {
+  if (!token) {
     return <Navigate to={redirect} replace={true} />;
   }
 

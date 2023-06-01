@@ -1,6 +1,6 @@
 import { Button, Header, Container } from '@mantine/core';
 import { useAppDispatch } from '@crea/ui/hooks';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { logoutAction } from '@crea/ui/store';
 import { CreaLogo } from '@crea/ui/components';
 import './LayoutHeader.scss';
@@ -17,7 +17,9 @@ export function LayoutHeader() {
   return (
     <Header height={60} mb={10} className="layout-header">
       <Container className="layout-header-container">
-        <CreaLogo height={35} />
+        <Link to="/products">
+          <CreaLogo height={35} />
+        </Link>
         <Button radius="xl" h={30} onClick={() => handleLogoutAction()}>
           Logout
         </Button>
