@@ -1,18 +1,26 @@
-import { Button, Center, PasswordInput, Stack, Text, Title, TextInput } from '@mantine/core';
+import { Button, Center, LoadingOverlay, PasswordInput, Stack, Text, Title, TextInput } from '@mantine/core';
 import { useFormik } from 'formik';
+import { useLoginMutation } from '@crea/ui/services';
 import { LayoutLogin } from '@crea/ui/components';
 
 export default function Login() {
+  const [loginRequest, { isLoading }] = useLoginMutation();
+
   const formik = useFormik({
     initialValues: {
-      email: '',
+      username: '',
       password: '',
+    },
+    onSubmit: ({ username, password }) => {
+      loginRequest({ username, password });
     },
   });
 
   return (
     <LayoutLogin>
       <Center className="login-card-container">
+        <LoadingOverlay visible={isLoading} overlayBlur={2} />
+
         <div className="login-card">
           <Stack spacing={10} mb={30}>
             <Title weight={700}>Bonjour</Title>
@@ -26,13 +34,13 @@ export default function Login() {
               <Stack mb={50}>
                 <Stack spacing={12}>
                   <TextInput
-                    id="email"
-                    name="email"
+                    id="username"
+                    name="username"
                     autoComplete="email"
-                    label="Email"
+                    label="Username"
                     size="lg"
-                    type="email"
-                    value={formik.values.email}
+                    type="text"
+                    value={formik.values.username}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   ></TextInput>

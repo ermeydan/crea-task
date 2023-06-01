@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth } from '@crea/ui/hooks';
 import { Navigate, Outlet } from 'react-router-dom';
 
 interface PublicRouteProps {
@@ -12,7 +13,9 @@ interface PublicRouteProps {
  * If the user is authenticated, redirect them to the specified URL.
  */
 export function PublicRoute({ component: Component, redirect = '/dashboard' }: PublicRouteProps) {
-  if (true) {
+  const auth = useAuth();
+
+  if (auth) {
     return <Navigate to={redirect} replace={true} />;
   }
 

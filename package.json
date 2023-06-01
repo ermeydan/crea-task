@@ -21,13 +21,17 @@
     "@mantine/hooks": "^6.0.9",
     "@reduxjs/toolkit": "^1.9.5",
     "@tabler/icons-react": "^2.20.0",
+    "axios": "^1.4.0",
     "clsx": "^1.2.1",
     "formik": "^2.4.0",
+    "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.2",
-    "react-use": "^17.4.0"
+    "react-use": "^17.4.0",
+    "redux-persist": "^6.0.0",
+    "redux-persist-transform-filter": "^0.0.22"
   },
   "devDependencies": {
     "@types/loadable__component": "^5.13.4",
