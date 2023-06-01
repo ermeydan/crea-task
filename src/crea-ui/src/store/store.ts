@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { AuthState } from './states';
-import { AuthService } from '@crea/ui/services';
+import { AuthService, ProductsService } from '@crea/ui/services';
 
 const STATES = {
   AuthState,
@@ -12,10 +12,11 @@ const REDUCERS = {
   AuthState: AuthState.reducer,
 };
 
-const MIDDLEWARES = [AuthService.middleware];
+const MIDDLEWARES = [AuthService.middleware, ProductsService.middleware];
 
 const SERVICES = {
   [AuthService.reducerPath]: AuthService.reducer,
+  [ProductsService.reducerPath]: ProductsService.reducer,
 };
 
 const COMBINED_REDUCERS = combineReducers({
