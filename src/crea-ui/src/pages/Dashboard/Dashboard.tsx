@@ -8,13 +8,15 @@ export default function Dashboard() {
   return (
     <div>
       <LoadingOverlay visible={isLoading} overlayBlur={2} />
-      <Grid>
-        {products.map((product: any, index: number) => (
-          <Grid.Col key={index} span={4}>
-            <ProductCard {...product} />
-          </Grid.Col>
-        ))}
-      </Grid>
+      {products && products.length && (
+        <Grid>
+          {products.map((product: any, index: number) => (
+            <Grid.Col key={index} span={4}>
+              <ProductCard {...product} />
+            </Grid.Col>
+          ))}
+        </Grid>
+      )}
     </div>
   );
 }
