@@ -4,7 +4,20 @@ import { ProductSlider } from './components/ProductSlider';
 import { useAppDispatch, useProductDetails } from '@crea/ui/hooks';
 import { useGetProductQuery } from '@crea/ui/services';
 import { resetProductDetailsAction } from '@crea/ui/store';
-import { Grid, Group, Kbd, LoadingOverlay, Rating, Stack, Text, Tooltip, Title } from '@mantine/core';
+import {
+  Anchor,
+  Breadcrumbs,
+  Card,
+  Grid,
+  Group,
+  Kbd,
+  LoadingOverlay,
+  Rating,
+  Stack,
+  Text,
+  Title,
+  Tooltip,
+} from '@mantine/core';
 import { useParams } from 'react-router-dom';
 import { useUnmount } from 'react-use';
 
@@ -32,6 +45,14 @@ export default function ProductDetails() {
 
       {product && isSuccess && (
         <>
+          <Card padding="md" withBorder={true}>
+            <Breadcrumbs>
+              <Anchor href="/products">Home</Anchor>
+
+              <Text>{product.name}</Text>
+            </Breadcrumbs>
+          </Card>
+
           <Grid mt={30}>
             <Grid.Col span={6}>
               <ProductSlider images={imgs} />
@@ -67,11 +88,12 @@ export default function ProductDetails() {
                 </Title>
 
                 <Text fw={500}>
-                  ETA
-                  {" "}
+                  ETA{' '}
                   <Tooltip label="Estimated Time of Arrival">
                     <Kbd>?</Kbd>
-                  </Tooltip> : 10.11.2222</Text>
+                  </Tooltip>{' '}
+                  : 10.11.2222
+                </Text>
               </Stack>
             </Grid.Col>
           </Grid>

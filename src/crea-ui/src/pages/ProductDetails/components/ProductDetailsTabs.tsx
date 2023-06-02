@@ -3,7 +3,7 @@ import { ProductComment } from './ProductComment';
 import { useProductComments } from '@crea/ui/hooks';
 import { Comment } from '@crea/ui/interfaces';
 import { useLazyGetProductCommentsQuery } from '@crea/ui/services';
-import { Alert, Badge, Divider, Group, LoadingOverlay, Title, Tabs } from '@mantine/core';
+import { Alert, Badge, Divider, Group, LoadingOverlay, Tabs, Title } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 
 interface ProductDetailsTabsProps {
@@ -15,8 +15,6 @@ export function ProductDetailsTabs({ productId, information }: React.PropsWithCh
   const [getComments, { isLoading }] = useLazyGetProductCommentsQuery();
   const [activeTab, setActiveTab] = useState<string | null>('information');
   const comments = useProductComments();
-
-  console.log('CCC', comments);
 
   useEffect(() => {
     if (activeTab === 'comments') {
@@ -32,7 +30,6 @@ export function ProductDetailsTabs({ productId, information }: React.PropsWithCh
       </Tabs.List>
 
       <Tabs.Panel value="information" pt="xs">
-        Gallery tab content
         {information}
       </Tabs.Panel>
 

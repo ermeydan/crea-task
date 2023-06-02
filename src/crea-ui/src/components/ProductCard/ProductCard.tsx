@@ -1,6 +1,7 @@
 import { Product } from '@crea/ui/interfaces';
 import { Carousel } from '@mantine/carousel';
 import { Button, Card, Group, Image, Rating, Text, createStyles, getStylesRef, rem } from '@mantine/core';
+import getSymbolFromCurrency from 'currency-symbol-map';
 import React from 'react';
 
 const useStyles = createStyles((theme) => ({
@@ -58,6 +59,14 @@ export function ProductCard({
     </Carousel.Slide>
   ));
 
+  const renderPriceWithSymbol = (price: number, currencyCode = 'USD') => {
+    return (
+      <>
+        {price} <small>{getSymbolFromCurrency(currencyCode.toUpperCase())}</small>
+      </>
+    );
+  };
+
   return (
     <Card radius="md" withBorder={true} padding="xl">
       <Card.Section>
@@ -95,11 +104,7 @@ export function ProductCard({
       <Group position="apart" mt="md">
         <div>
           <Text fz="xl" span={true} fw={500} className={classes.price}>
-            {price}
-          </Text>
-          <Text span={true} fz="sm" c="dimmed">
-            {' '}
-            / night
+            {renderPriceWithSymbol(price, currency)}
           </Text>
         </div>
 

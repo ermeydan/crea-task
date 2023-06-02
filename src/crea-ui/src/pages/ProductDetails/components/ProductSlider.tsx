@@ -41,7 +41,7 @@ export function ProductSlider({ images }: React.PropsWithChildren<ProductSliderP
 
   const slides = images.map((image) => (
     <Carousel.Slide key={image}>
-      <Image src={image} height={220} />
+      <Image src={image} />
     </Carousel.Slide>
   ));
 

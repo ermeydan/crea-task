@@ -1,6 +1,6 @@
 import { axiosBaseQuery } from './base.service';
 import { HttpMethod } from '@crea/ui/enums';
-import { Comment, Product, Nullable, ProductDetails } from '@crea/ui/interfaces';
+import { Comment, Nullable, Product, ProductDetails } from '@crea/ui/interfaces';
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 export const ProductsService = createApi({

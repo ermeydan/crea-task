@@ -24,6 +24,7 @@
     "@tabler/icons-react": "^2.20.0",
     "axios": "^1.4.0",
     "clsx": "^1.2.1",
+    "currency-symbol-map": "^5.1.0",
     "embla-carousel-react": "^8.0.0-rc06",
     "formik": "^2.4.0",
     "global": "^4.4.0",
