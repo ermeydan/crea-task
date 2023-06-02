@@ -3,7 +3,7 @@ import { ProductComment } from './ProductComment';
 import { useProductComments } from '@crea/ui/hooks';
 import { Comment } from '@crea/ui/interfaces';
 import { useLazyGetProductCommentsQuery } from '@crea/ui/services';
-import { Alert, LoadingOverlay, Tabs } from '@mantine/core';
+import { Alert, Badge, Divider, Group, LoadingOverlay, Title, Tabs } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 
 interface ProductDetailsTabsProps {
@@ -44,6 +44,12 @@ export function ProductDetailsTabs({ productId, information }: React.PropsWithCh
 
           {comments && comments!.length > 0 ? (
             <>
+              <Group>
+                <Title order={2}>All Comments</Title>
+                <Badge>{comments.length}</Badge>
+              </Group>
+
+              <Divider my="sm" />
               {comments!.map((comment: Comment, index: number) => (
                 <ProductComment
                   key={index}

@@ -1,6 +1,6 @@
 import { MIN_COMMENT_LENGTH } from '@crea/ui/constants';
 import { useLazyGetProductCommentsQuery, useLazyGetProductQuery, useSendCommentMutation } from '@crea/ui/services';
-import { Alert, Button, Divider, Group, Input, Rating, Stack, Textarea } from '@mantine/core';
+import { Alert, Button, Card, Group, Input, Rating, Stack, Textarea } from '@mantine/core';
 import React, { useMemo, useState } from 'react';
 
 interface LeaveCommentProps {
@@ -12,7 +12,7 @@ export function LeaveComment({ productId }: React.PropsWithChildren<LeaveComment
   const [comment, setComment] = useState<string>('');
   const [rating, setRating] = useState<number>(3);
   const [getProductDetails] = useLazyGetProductQuery();
-  const [getProductComments] = useLazyGetProductCommentsQuery();
+  const [getComments] = useLazyGetProductCommentsQuery();
 
   const isSubmitBtnDisabled = useMemo(() => {
     return comment.length < MIN_COMMENT_LENGTH;
@@ -20,7 +20,7 @@ export function LeaveComment({ productId }: React.PropsWithChildren<LeaveComment
 
   const handleSendCommentSuccess = () => {
     getProductDetails({ productId });
-    getProductComments({ productId });
+    getComments({ productId });
   };
 
   const handleCommentSubmit = () => {
@@ -40,7 +40,7 @@ export function LeaveComment({ productId }: React.PropsWithChildren<LeaveComment
           Thank you for your feedback.
         </Alert>
       ) : (
-        <>
+        <Card shadow="sm" padding="lg" radius="md" withBorder={true}>
           <Textarea
             placeholder="Your feedback is highly appreciated"
             label="Your comment"
@@ -49,19 +49,18 @@ export function LeaveComment({ productId }: React.PropsWithChildren<LeaveComment
             value={comment}
             onChange={(event) => setComment(event.currentTarget.value)}
           />
-          <Input.Description mb={10}>Minimum {MIN_COMMENT_LENGTH} characters</Input.Description>
+          <Input.Description mt={10}>Minimum {MIN_COMMENT_LENGTH} characters</Input.Description>
 
-          <Group>
+          <Group mb={20} mt={20}>
             <Input.Label>Rate your experience:</Input.Label>
             <Rating value={rating} onChange={setRating} />
           </Group>
+
           <Button disabled={isSubmitBtnDisabled} onClick={handleCommentSubmit} loading={isLoading}>
             Submit
           </Button>
-        </>
+        </Card>
       )}
-
-      <Divider my="sm" />
     </Stack>
   );
 }

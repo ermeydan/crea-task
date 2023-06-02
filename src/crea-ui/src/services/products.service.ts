@@ -1,13 +1,13 @@
 import { axiosBaseQuery } from './base.service';
 import { HttpMethod } from '@crea/ui/enums';
-import { Comment, Nullable, ProductDetails } from '@crea/ui/interfaces';
+import { Comment, Product, Nullable, ProductDetails } from '@crea/ui/interfaces';
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 export const ProductsService = createApi({
   reducerPath: 'AuthService',
   baseQuery: axiosBaseQuery(),
   endpoints: (builder) => ({
-    products: builder.query<any, void>({
+    products: builder.query<Product[], void>({
       query: () => ({
         url: '/products',
         method: HttpMethod.GET,
