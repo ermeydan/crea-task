@@ -1,9 +1,10 @@
 import { ProductCard } from '@crea/ui/components';
+import { Product } from '@crea/ui/interfaces';
 import { useProductsQuery } from '@crea/ui/services';
 import { Badge, Grid, Group, LoadingOverlay, Title } from '@mantine/core';
 
 export default function Products() {
-  const { data: products, isLoading } = useProductsQuery();
+  const { data: products = [] as Product[], isLoading } = useProductsQuery();
 
   return (
     <div>
@@ -19,8 +20,8 @@ export default function Products() {
           </Group>
           <hr />
           <Grid>
-            {products.map((product: any, index: number) => (
-              <Grid.Col key={index} span={4}>
+            {products.map((product: Product) => (
+              <Grid.Col key={product.id} span={4}>
                 <ProductCard {...product} />
               </Grid.Col>
             ))}

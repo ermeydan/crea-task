@@ -768,6 +768,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/carousel@npm:^6.0.13":
+  version: 6.0.13
+  resolution: "@mantine/carousel@npm:6.0.13"
+  dependencies:
+    "@mantine/utils": 6.0.13
+  peerDependencies:
+    "@mantine/core": 6.0.13
+    "@mantine/hooks": 6.0.13
+    embla-carousel-react: ^7.0.0
+    react: ">=16.8.0"
+  checksum: ff2b18216b3e9cbe1059b328b6699a1212683b54f0f6a16329079eb689efd90a17fdfacfb43f780e5f56a63910d1354749d52727e97841e3d775952231e5e2ab
+  languageName: node
+  linkType: hard
+
 "@mantine/core@npm:^6.0.9":
   version: 6.0.13
   resolution: "@mantine/core@npm:6.0.13"
@@ -1518,6 +1532,7 @@ __metadata:
   dependencies:
     "@emotion/react": ^11.10.8
     "@loadable/component": ^5.15.3
+    "@mantine/carousel": ^6.0.13
     "@mantine/core": ^6.0.9
     "@mantine/hooks": ^6.0.9
     "@reduxjs/toolkit": ^1.9.5
@@ -1532,6 +1547,7 @@ __metadata:
     "@vitejs/plugin-react": ^4.0.0
     axios: ^1.4.0
     clsx: ^1.2.1
+    embla-carousel-react: ^8.0.0-rc06
     eslint: ^8.38.0
     eslint-config-prettier: ^8.8.0
     eslint-plugin-prettier: ^4.2.1
@@ -2102,6 +2118,34 @@ __metadata:
   version: 1.4.413
   resolution: "electron-to-chromium@npm:1.4.413"
   checksum: 6d702b84e2c5fb8d97cbaec759556c4f801572e62eab2098919061e2f3e7cbca71b9f170a4efb023001d4fd59e8603b4d7004dafc64d89c9f19db4642fdbd012
+  languageName: node
+  linkType: hard
+
+"embla-carousel-react@npm:^8.0.0-rc06":
+  version: 8.0.0-rc06
+  resolution: "embla-carousel-react@npm:8.0.0-rc06"
+  dependencies:
+    embla-carousel: 8.0.0-rc06
+    embla-carousel-reactive-utils: 8.0.0-rc06
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.1 || ^18.0.0
+  checksum: 43d93669672f4beca0b400f997b890e3c2f352d248ba5166b374942f3bc10b1a6f8b81435d9d1917a74ba654910585d8a7be955ee90da2c866e5d95aea3a80d7
+  languageName: node
+  linkType: hard
+
+"embla-carousel-reactive-utils@npm:8.0.0-rc06":
+  version: 8.0.0-rc06
+  resolution: "embla-carousel-reactive-utils@npm:8.0.0-rc06"
+  peerDependencies:
+    embla-carousel: 8.0.0-rc06
+  checksum: 296a617e4d7eddd372647eddfed9cad1814546b349337d020b1e617c056c696e64e2f93bb5e084f827029376cfc61f038b98ad0a484e384bb5381a6ab6bc8e39
+  languageName: node
+  linkType: hard
+
+"embla-carousel@npm:8.0.0-rc06":
+  version: 8.0.0-rc06
+  resolution: "embla-carousel@npm:8.0.0-rc06"
+  checksum: 7976b73b6df4b8f5933c04414fc3d6ea364d585ad1ff58b0c825c6853bab3a77f8a31bb0f399bd099cff9802c5558a20136f3156b7f2c13e3bc9ce80db1f5d99
   languageName: node
   linkType: hard
 

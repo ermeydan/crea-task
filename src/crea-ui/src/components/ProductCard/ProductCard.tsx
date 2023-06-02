@@ -1,97 +1,112 @@
-import { Badge, Button, Card, Center, Group, Image, Text, createStyles, rem } from '@mantine/core';
-import { IconGasStation, IconGauge, IconManualGearbox, IconUsers } from '@tabler/icons-react';
+import { Product } from '@crea/ui/interfaces';
+import { Carousel } from '@mantine/carousel';
+import { Button, Card, Group, Image, Rating, Text, createStyles, getStylesRef, rem } from '@mantine/core';
+import React from 'react';
 
 const useStyles = createStyles((theme) => ({
-  card: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+  price: {
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
   },
 
-  imageSection: {
-    padding: theme.spacing.md,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderBottom: `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]}`,
+  carousel: {
+    '&:hover': {
+      [`& .${getStylesRef('carouselControls')}`]: {
+        opacity: 1,
+      },
+    },
   },
 
-  label: {
-    marginBottom: theme.spacing.xs,
-    lineHeight: 1,
-    fontWeight: 700,
-    fontSize: theme.fontSizes.xs,
-    letterSpacing: rem(-0.25),
-    textTransform: 'uppercase',
+  carouselControls: {
+    ref: getStylesRef('carouselControls'),
+    transition: 'opacity 150ms ease',
+    opacity: 0,
   },
 
-  section: {
-    padding: theme.spacing.md,
-    borderTop: `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]}`,
-  },
+  carouselIndicator: {
+    width: rem(4),
+    height: rem(4),
+    transition: 'width 250ms ease',
 
-  icon: {
-    marginRight: rem(5),
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[2] : theme.colors.gray[5],
+    '&[data-active]': {
+      width: rem(16),
+    },
   },
 }));
 
-const mockdata = [
-  { label: '4 passengers', icon: IconUsers },
-  { label: '100 km/h in 4 seconds', icon: IconGauge },
-  { label: 'Automatic gearbox', icon: IconManualGearbox },
-  { label: 'Electric', icon: IconGasStation },
+const imgs = [
+  'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
+  'https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
+  'https://images.unsplash.com/photo-1605774337664-7a846e9cdf17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
+  'https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
+  'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
 ];
 
-export function ProductCard() {
+export function ProductCard({
+  id,
+  name,
+  description,
+  price,
+  score,
+  currency,
+  images,
+}: React.PropsWithChildren<Product>) {
   const { classes } = useStyles();
-  const features = mockdata.map((feature) => (
-    <Center key={feature.label}>
-      <feature.icon size="1.05rem" className={classes.icon} stroke={1.5} />
-      <Text size="xs">{feature.label}</Text>
-    </Center>
+
+  const slides = imgs.map((image) => (
+    <Carousel.Slide key={image}>
+      <Image src={image} height={220} />
+    </Carousel.Slide>
   ));
 
   return (
-    <Card withBorder={true} radius="md" className={classes.card}>
-      <Card.Section className={classes.imageSection}>
-        <Image src="https://i.imgur.com/ZL52Q2D.png" alt="Tesla Model S" />
+    <Card radius="md" withBorder={true} padding="xl">
+      <Card.Section>
+        <Carousel
+          withIndicators={true}
+          loop={true}
+          classNames={{
+            root: classes.carousel,
+            controls: classes.carouselControls,
+            indicator: classes.carouselIndicator,
+          }}
+        >
+          {slides}
+        </Carousel>
       </Card.Section>
+
+      <Group position="apart" mt="lg">
+        <Text fw={500} fz="lg">
+          {name}
+        </Text>
+      </Group>
+
+      <Group spacing={5}>
+        <Rating value={score} fractions={2} readOnly={true} />
+        <Text fz="xs" fw={500}>
+          {score}
+        </Text>
+      </Group>
+
+      <Text fz="sm" c="dimmed" mt="sm">
+        Relax, rejuvenate and unplug in this unique contemporary Birdbox. Feel close to nature in ultimate comfort.
+        Enjoy the view of the epic mountain range of Blegja and the Førdefjord.
+      </Text>
 
       <Group position="apart" mt="md">
         <div>
-          <Text fw={500}>Tesla Model S</Text>
-          <Text fz="xs" c="dimmed">
-            Free recharge at any station
+          <Text fz="xl" span={true} fw={500} className={classes.price}>
+            {price}
+          </Text>
+          <Text span={true} fz="sm" c="dimmed">
+            {' '}
+            / night
           </Text>
         </div>
-        <Badge variant="outline">25% off</Badge>
+
+        <Button component="a" href={`/products/${id}`} radius="md">
+          Buy now
+        </Button>
       </Group>
-
-      <Card.Section className={classes.section} mt="md">
-        <Text fz="sm" c="dimmed" className={classes.label}>
-          Basic configuration
-        </Text>
-
-        <Group spacing={8} mb={-8}>
-          {features}
-        </Group>
-      </Card.Section>
-
-      <Card.Section className={classes.section}>
-        <Group spacing={30}>
-          <div>
-            <Text fz="xl" fw={700} sx={{ lineHeight: 1 }}>
-              $168.00
-            </Text>
-            <Text fz="sm" c="dimmed" fw={500} sx={{ lineHeight: 1 }} mt={3}>
-              per day
-            </Text>
-          </div>
-
-          <Button radius="xl" style={{ flex: 1 }}>
-            Rent now
-          </Button>
-        </Group>
-      </Card.Section>
     </Card>
   );
 }
