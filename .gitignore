@@ -31,4 +31,6 @@ dist-ssr
 !.yarn/versions
 .pnp.*
 
+ui-dist/*
+
 .eslintcache

@@ -42,15 +42,7 @@ const imgs = [
   'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
 ];
 
-export function ProductCard({
-  id,
-  name,
-  description,
-  price,
-  score,
-  currency,
-  images,
-}: React.PropsWithChildren<Product>) {
+export function ProductCard({ id, name, price, score, currency }: React.PropsWithChildren<Product>) {
   const { classes } = useStyles();
 
   const slides = imgs.map((image) => (
