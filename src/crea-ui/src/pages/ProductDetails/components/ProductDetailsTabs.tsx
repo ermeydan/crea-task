@@ -49,7 +49,7 @@ export function ProductDetailsTabs({ productId, information }: React.PropsWithCh
                 <Badge>{comments.length}</Badge>
               </Group>
 
-              <Divider my="sm" />
+              <Divider size="md" mt={10} mb={20} />
               {comments!.map((comment: Comment, index: number) => (
                 <ProductComment
                   key={index}

@@ -4,7 +4,7 @@ import { ProductSlider } from './components/ProductSlider';
 import { useAppDispatch, useProductDetails } from '@crea/ui/hooks';
 import { useGetProductQuery } from '@crea/ui/services';
 import { resetProductDetailsAction } from '@crea/ui/store';
-import { Grid, Group, LoadingOverlay, Rating, Stack, Text, Title } from '@mantine/core';
+import { Grid, Group, Kbd, LoadingOverlay, Rating, Stack, Text, Tooltip, Title } from '@mantine/core';
 import { useParams } from 'react-router-dom';
 import { useUnmount } from 'react-use';
 
@@ -66,7 +66,12 @@ export default function ProductDetails() {
                   {product.price}
                 </Title>
 
-                <Text fw={500}>Arrival Date: 10.11.2222</Text>
+                <Text fw={500}>
+                  ETA
+                  {" "}
+                  <Tooltip label="Estimated Time of Arrival">
+                    <Kbd>?</Kbd>
+                  </Tooltip> : 10.11.2222</Text>
               </Stack>
             </Grid.Col>
           </Grid>
