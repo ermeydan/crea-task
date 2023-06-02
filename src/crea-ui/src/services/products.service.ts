@@ -23,8 +23,20 @@ export const ProductsService = createApi({
 
     getProductComments: builder.query<Nullable<Comment[]>, { productId: string }>({
       query: ({ productId }) => ({
-        url: `/comments/${productId} `,
+        url: `/comments/${productId}`,
         method: HttpMethod.GET,
+      }),
+    }),
+
+    sendComment: builder.mutation<Comment, { productId: string; text: string; score: number }>({
+      query: ({ productId, text, score }) => ({
+        url: `/comments/${productId}`,
+        method: HttpMethod.POST,
+        data: {
+          productId,
+          text,
+          score,
+        },
       }),
     }),
   }),
@@ -36,4 +48,5 @@ export const {
   useLazyGetProductQuery,
   useGetProductQuery,
   useLazyGetProductCommentsQuery,
+  useSendCommentMutation,
 } = ProductsService;

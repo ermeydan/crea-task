@@ -1,3 +1,4 @@
+import { LeaveComment } from './LeaveComment';
 import { ProductComment } from './ProductComment';
 import { Comment } from '@crea/ui/interfaces';
 import { useLazyGetProductCommentsQuery } from '@crea/ui/services';
@@ -34,23 +35,27 @@ export function ProductDetailsTabs({ productId, information }: React.PropsWithCh
       <Tabs.Panel value="comments" pt="xs" pos="relative">
         <LoadingOverlay visible={isLoading} overlayBlur={2} />
 
-        {comments!.length > 0 ? (
-          <>
-            {comments!.map((comment: Comment, index: number) => (
-              <ProductComment
-                key={index}
-                score={comment.score}
-                text={comment.text}
-                username={comment.username}
-                date={comment.date}
-              />
-            ))}
-          </>
-        ) : (
-          <Alert title="No comments yet." color="cyan">
-            Why don't you start the conversation?
-          </Alert>
-        )}
+        <>
+          <LeaveComment productId={productId} />
+
+          {comments!.length > 0 ? (
+            <>
+              {comments!.map((comment: Comment, index: number) => (
+                <ProductComment
+                  key={index}
+                  score={comment.score}
+                  text={comment.text}
+                  username={comment.username}
+                  date={comment.date}
+                />
+              ))}
+            </>
+          ) : (
+            <Alert title="No comments yet." color="cyan">
+              Why don't you start the conversation?
+            </Alert>
+          )}
+        </>
       </Tabs.Panel>
     </Tabs>
   );

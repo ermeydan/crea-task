@@ -1,4 +1,4 @@
-import { Group, Rating, Text, Title } from '@mantine/core';
+import { Divider, Group, Rating, Text, Title } from '@mantine/core';
 import React from 'react';
 
 interface ProductCommentProps {
@@ -27,7 +27,7 @@ export function ProductComment({ score, username, text, date }: React.PropsWithC
         {text}
       </Text>
 
-      <hr />
+      <Divider my="sm" />
     </div>
   );
 }
