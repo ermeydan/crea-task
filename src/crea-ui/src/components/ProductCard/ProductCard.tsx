@@ -51,10 +51,10 @@ export function ProductCard({ id, name, price, score, currency }: React.PropsWit
     </Carousel.Slide>
   ));
 
-  const renderPriceWithSymbol = (price: number, currencyCode = 'USD') => {
+  const renderPriceWithSymbol = (currencyCode = 'USD', price: number) => {
     return (
       <>
-        {price} <small>{getSymbolFromCurrency(currencyCode.toUpperCase())}</small>
+        <small>{getSymbolFromCurrency(currencyCode.toUpperCase())}</small> {price}
       </>
     );
   };
@@ -76,7 +76,7 @@ export function ProductCard({ id, name, price, score, currency }: React.PropsWit
       </Card.Section>
 
       <Group position="apart" mt="lg">
-        <Text fw={500} fz="lg">
+        <Text fw={500} fz="md">
           {name}
         </Text>
       </Group>
@@ -88,7 +88,7 @@ export function ProductCard({ id, name, price, score, currency }: React.PropsWit
         </Text>
       </Group>
 
-      <Text fz="sm" c="dimmed" mt="sm">
+      <Text fz="xs" c="dimmed" mt="sm">
         Relax, rejuvenate and unplug in this unique contemporary Birdbox. Feel close to nature in ultimate comfort.
         Enjoy the view of the epic mountain range of Blegja and the Førdefjord.
       </Text>
@@ -96,7 +96,7 @@ export function ProductCard({ id, name, price, score, currency }: React.PropsWit
       <Group position="apart" mt="md">
         <div>
           <Text fz="xl" span={true} fw={500} className={classes.price}>
-            {renderPriceWithSymbol(price, currency)}
+            {renderPriceWithSymbol(currency, price)}
           </Text>
         </div>
 

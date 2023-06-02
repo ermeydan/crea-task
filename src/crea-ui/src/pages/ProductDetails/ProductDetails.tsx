@@ -8,6 +8,7 @@ import {
   Anchor,
   Breadcrumbs,
   Card,
+  Divider,
   Grid,
   Group,
   Kbd,
@@ -18,6 +19,7 @@ import {
   Title,
   Tooltip,
 } from '@mantine/core';
+import getSymbolFromCurrency from 'currency-symbol-map';
 import { useParams } from 'react-router-dom';
 import { useUnmount } from 'react-use';
 
@@ -28,6 +30,14 @@ const imgs = [
   'https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
   'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
 ];
+
+const renderPriceWithSymbol = (currencyCode = 'USD', price: number) => {
+  return (
+    <>
+      <small>{getSymbolFromCurrency(currencyCode.toUpperCase())}</small> {price}
+    </>
+  );
+};
 
 export default function ProductDetails() {
   const dispatch = useAppDispatch();
@@ -83,17 +93,24 @@ export default function ProductDetails() {
                   it to try biting a Steel-type Pokémon.
                 </Text>
 
+                <Divider my="sm" />
+
+                <Text>Price:</Text>
+
                 <Title c="orange" order={3} weight={900}>
-                  {product.price}
+                  {renderPriceWithSymbol(product.currency, product.price)}
                 </Title>
 
-                <Text fw={500}>
+                <Text mt={20}>
                   ETA{' '}
                   <Tooltip label="Estimated Time of Arrival">
                     <Kbd>?</Kbd>
                   </Tooltip>{' '}
-                  : 10.11.2222
+                  :
                 </Text>
+
+                <Text fw={500}>10.11.2222</Text>
+                <Divider my="sm" />
               </Stack>
             </Grid.Col>
           </Grid>
