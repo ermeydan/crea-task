@@ -1,8 +1,9 @@
 import { LeaveComment } from './LeaveComment';
 import { ProductComment } from './ProductComment';
+import { useProductComments } from '@crea/ui/hooks';
 import { Comment } from '@crea/ui/interfaces';
 import { useLazyGetProductCommentsQuery } from '@crea/ui/services';
-import { Alert, Badge, LoadingOverlay, Tabs } from '@mantine/core';
+import { Alert, LoadingOverlay, Tabs } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 
 interface ProductDetailsTabsProps {
@@ -11,11 +12,14 @@ interface ProductDetailsTabsProps {
 }
 
 export function ProductDetailsTabs({ productId, information }: React.PropsWithChildren<ProductDetailsTabsProps>) {
-  const [getComments, { data: comments = [] as Comment[], isLoading }] = useLazyGetProductCommentsQuery();
+  const [getComments, { isLoading }] = useLazyGetProductCommentsQuery();
   const [activeTab, setActiveTab] = useState<string | null>('information');
+  const comments = useProductComments();
+
+  console.log('CCC', comments);
 
   useEffect(() => {
-    if (activeTab === 'comments' && comments && !comments.length) {
+    if (activeTab === 'comments') {
       getComments({ productId });
     }
   }, [activeTab]);
@@ -24,7 +28,7 @@ export function ProductDetailsTabs({ productId, information }: React.PropsWithCh
     <Tabs className="product-details-tabs" value={activeTab} onTabChange={setActiveTab}>
       <Tabs.List>
         <Tabs.Tab value="information">Information</Tabs.Tab>
-        <Tabs.Tab value="comments">Comments {!!comments!.length && <Badge>{comments!.length}</Badge>}</Tabs.Tab>
+        <Tabs.Tab value="comments">Comments</Tabs.Tab>
       </Tabs.List>
 
       <Tabs.Panel value="information" pt="xs">
@@ -38,7 +42,7 @@ export function ProductDetailsTabs({ productId, information }: React.PropsWithCh
         <>
           <LeaveComment productId={productId} />
 
-          {comments!.length > 0 ? (
+          {comments && comments!.length > 0 ? (
             <>
               {comments!.map((comment: Comment, index: number) => (
                 <ProductComment

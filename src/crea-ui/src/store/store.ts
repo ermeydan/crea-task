@@ -1,4 +1,4 @@
-import { AuthState } from './states';
+import { AuthState, ProductDetailsState } from './states';
 import { AuthService, ProductsService } from '@crea/ui/services';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
@@ -6,10 +6,12 @@ import storage from 'redux-persist/lib/storage';
 
 const STATES = {
   AuthState,
+  ProductDetailsState,
 };
 
 const REDUCERS = {
   AuthState: AuthState.reducer,
+  ProductDetailsState: ProductDetailsState.reducer,
 };
 
 const MIDDLEWARES = [AuthService.middleware, ProductsService.middleware];
@@ -29,6 +31,7 @@ const persistedReducer = persistReducer(
     key: 'crea',
     version: 1,
     storage,
+    whitelist: [AuthState.name],
   },
   COMBINED_REDUCERS,
 );

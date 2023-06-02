@@ -5,7 +5,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 const Login = loadable(() => import('./pages/Login/Login'));
 const Logout = loadable(() => import('./pages/Logout/Logout'));
 const Products = loadable(() => import('./pages/Products/Products'));
-const Product = loadable(() => import('./pages/Product/Product'));
+const ProductDetails = loadable(() => import('./pages/ProductDetails/ProductDetails'));
 
 export function RouteProviders() {
   return (
@@ -17,7 +17,7 @@ export function RouteProviders() {
 
         <Route path="/products" element={<ProtectedRoute />}>
           <Route element={<LayoutDashboard />}>
-            <Route path=":id" element={<Product />} />
+            <Route path=":id" element={<ProductDetails />} />
             <Route index={true} element={<Products />} />
           </Route>
         </Route>

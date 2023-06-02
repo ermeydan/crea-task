@@ -1568,6 +1568,7 @@ __metadata:
     redux-persist-transform-filter: ^0.0.22
     sass: ^1.62.1
     svgo: ^3.0.2
+    ts-deepmerge: ^6.0.3
     typescript: ^5.0.2
     vite: ^4.3.2
     vite-tsconfig-paths: ^4.2.0
@@ -5085,6 +5086,13 @@ __metadata:
   version: 2.0.2
   resolution: "toposort@npm:2.0.2"
   checksum: d64c74b570391c9432873f48e231b439ee56bc49f7cb9780b505cfdf5cb832f808d0bae072515d93834dd6bceca5bb34448b5b4b408335e4d4716eaf68195dcb
+  languageName: node
+  linkType: hard
+
+"ts-deepmerge@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "ts-deepmerge@npm:6.0.3"
+  checksum: 188120aac49a2d1bc0ef1a54365b01d0b720351cdd0e28cbb98dadcdd0cf8a65e0412154c66e08d87974471a24d559d384a1e49d7b4bcca7d22c826ffcf6690f
   languageName: node
   linkType: hard
 

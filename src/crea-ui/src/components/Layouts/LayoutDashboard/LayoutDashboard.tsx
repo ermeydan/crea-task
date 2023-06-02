@@ -1,3 +1,4 @@
+import './LayoutDashboard.scss';
 import { LayoutFooter, LayoutHeader } from './components';
 import { Container } from '@mantine/core';
 import { Outlet } from 'react-router-dom';

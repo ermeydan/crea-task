@@ -1,5 +1,5 @@
 import { MIN_COMMENT_LENGTH } from '@crea/ui/constants';
-import { useSendCommentMutation } from '@crea/ui/services';
+import { useLazyGetProductCommentsQuery, useLazyGetProductQuery, useSendCommentMutation } from '@crea/ui/services';
 import { Alert, Button, Divider, Group, Input, Rating, Stack, Textarea } from '@mantine/core';
 import React, { useMemo, useState } from 'react';
 
@@ -11,10 +11,17 @@ export function LeaveComment({ productId }: React.PropsWithChildren<LeaveComment
   const [sendComment, { isLoading, isSuccess }] = useSendCommentMutation();
   const [comment, setComment] = useState<string>('');
   const [rating, setRating] = useState<number>(3);
+  const [getProductDetails] = useLazyGetProductQuery();
+  const [getProductComments] = useLazyGetProductCommentsQuery();
 
   const isSubmitBtnDisabled = useMemo(() => {
     return comment.length < MIN_COMMENT_LENGTH;
   }, [comment]);
+
+  const handleSendCommentSuccess = () => {
+    getProductDetails({ productId });
+    getProductComments({ productId });
+  };
 
   const handleCommentSubmit = () => {
     const payload = {
@@ -23,7 +30,7 @@ export function LeaveComment({ productId }: React.PropsWithChildren<LeaveComment
       score: rating,
     };
 
-    sendComment(payload);
+    sendComment(payload).then(handleSendCommentSuccess);
   };
 
   return (
