@@ -1,12 +1,12 @@
+import { Nullable, User } from '@crea/ui/interfaces';
 import { AuthService } from '@crea/ui/services';
 import { createSlice } from '@reduxjs/toolkit';
 import jwt_decode from 'jwt-decode';
-import { User, Nullable } from '@crea/ui/interfaces';
 
 export interface AuthStateType {
   user: User;
   token: Nullable<string>;
-};
+}
 
 const initialState: AuthStateType = {
   token: null,

@@ -1,20 +1,51 @@
 import { LayoutLogin } from '@crea/ui/components';
 import { useLoginMutation } from '@crea/ui/services';
-import { Button, Center, LoadingOverlay, FocusTrap, PasswordInput, Stack, Text, TextInput, Title } from '@mantine/core';
+import {
+  Alert,
+  Button,
+  Center,
+  FocusTrap,
+  LoadingOverlay,
+  PasswordInput,
+  Stack,
+  Text,
+  TextInput,
+  Title,
+} from '@mantine/core';
 import { useFormik } from 'formik';
+import { useMemo } from 'react';
+import { object, string } from 'yup';
 
 export default function Login() {
-  const [loginRequest, { isLoading }] = useLoginMutation();
+  const [loginRequest, { isLoading, isError }] = useLoginMutation();
+
+  const loginValidationSchema = useMemo(
+    () =>
+      object()
+        .shape({
+          username: string().min(4).trim().required(),
+          password: string().min(5).required(),
+        })
+        .strict(),
+    [],
+  );
 
   const formik = useFormik({
     initialValues: {
       username: '',
       password: '',
     },
+    validationSchema: loginValidationSchema,
     onSubmit: ({ username, password }) => {
       loginRequest({ username, password });
     },
   });
+
+  const isLoadingBtnDisabled = useMemo(() => {
+    const isFormNotReady = !(formik.isValid && formik.dirty);
+
+    return isFormNotReady;
+  }, [formik.isValid, formik.dirty]);
 
   return (
     <LayoutLogin>
@@ -27,6 +58,11 @@ export default function Login() {
             <Text component="p" color="gray" size="md">
               Please login to access the platform.
             </Text>
+            {isError && (
+              <Alert title="Error!" color="red">
+                Something terrible happened!
+              </Alert>
+            )}
           </Stack>
 
           <FocusTrap active={true}>
@@ -59,7 +95,7 @@ export default function Login() {
                     />
                   </Stack>
 
-                  <Button size="xl" type="submit">
+                  <Button disabled={isLoadingBtnDisabled} size="xl" type="submit">
                     Login
                   </Button>
                 </Stack>

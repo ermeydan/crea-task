@@ -1,3 +1,5 @@
+import { HttpStatusCode } from '@crea/ui/enums';
+import { logoutAction, store } from '@crea/ui/store';
 import type { BaseQueryFn } from '@reduxjs/toolkit/query';
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
@@ -15,9 +17,9 @@ export const axiosBaseQuery =
     unknown
   > =>
   async ({ url, method, data, params }) => {
-    try {
-      const token = 'asd';
+    const { token } = store.getState().AuthState;
 
+    try {
       const result = await axios({
         url: baseUrl + url,
         method,
@@ -33,6 +35,11 @@ export const axiosBaseQuery =
       return result;
     } catch (axiosError) {
       const err = axiosError as AxiosError;
+
+      if (token && HttpStatusCode.UNAUTHORIZED == err.response?.status) {
+        store.dispatch(logoutAction());
+      }
+
       return {
         error: {
           status: err.response?.status,
