@@ -7,7 +7,7 @@ export default function Logout() {
     <LayoutLogin>
       <Center className="login-card-container">
         <div className="login-card">
-          <Stack spacing={10} mb={30}>
+          <Stack spacing={10} mb={30} align="center">
             <Title weight={700}>Logged Out</Title>
             <Text component="p" color="gray" size="md">
               Thank you for using <strong>Crea</strong>

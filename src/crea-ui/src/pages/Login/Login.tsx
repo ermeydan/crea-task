@@ -1,6 +1,6 @@
 import { LayoutLogin } from '@crea/ui/components';
 import { useLoginMutation } from '@crea/ui/services';
-import { Button, Center, LoadingOverlay, PasswordInput, Stack, Text, TextInput, Title } from '@mantine/core';
+import { Button, Center, LoadingOverlay, FocusTrap, PasswordInput, Stack, Text, TextInput, Title } from '@mantine/core';
 import { useFormik } from 'formik';
 
 export default function Login() {
@@ -29,40 +29,43 @@ export default function Login() {
             </Text>
           </Stack>
 
-          <form onSubmit={formik.handleSubmit}>
-            <Stack>
-              <Stack mb={50}>
-                <Stack spacing={12}>
-                  <TextInput
-                    id="username"
-                    name="username"
-                    autoComplete="email"
-                    label="Username"
-                    size="lg"
-                    type="text"
-                    value={formik.values.username}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  ></TextInput>
+          <FocusTrap active={true}>
+            <form onSubmit={formik.handleSubmit}>
+              <Stack>
+                <Stack mb={50}>
+                  <Stack spacing={12}>
+                    <TextInput
+                      id="username"
+                      name="username"
+                      autoComplete="username"
+                      label="Username"
+                      size="lg"
+                      type="text"
+                      value={formik.values.username}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      data-autofocus={true}
+                    ></TextInput>
 
-                  <PasswordInput
-                    id="password"
-                    name="password"
-                    autoComplete="password"
-                    label="Password"
-                    size="lg"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
+                    <PasswordInput
+                      id="password"
+                      name="password"
+                      autoComplete="password"
+                      label="Password"
+                      size="lg"
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    />
+                  </Stack>
+
+                  <Button size="xl" type="submit">
+                    Login
+                  </Button>
                 </Stack>
-
-                <Button size="xl" type="submit">
-                  Login
-                </Button>
               </Stack>
-            </Stack>
-          </form>
+            </form>
+          </FocusTrap>
         </div>
       </Center>
     </LayoutLogin>
