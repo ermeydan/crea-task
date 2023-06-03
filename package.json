@@ -25,6 +25,7 @@
     "axios": "^1.4.0",
     "clsx": "^1.2.1",
     "currency-symbol-map": "^5.1.0",
+    "date-fns": "^2.30.0",
     "embla-carousel-react": "^8.0.0-rc06",
     "formik": "^2.4.0",
     "global": "^4.4.0",

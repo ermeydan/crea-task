@@ -23,14 +23,14 @@ export const ProductsService = createApi({
 
     getProductComments: builder.query<Nullable<Comment[]>, { productId: string }>({
       query: ({ productId }) => ({
-        url: `/comments/${productId}`,
+        url: `/products/${productId}/comments`,
         method: HttpMethod.GET,
       }),
     }),
 
     sendComment: builder.mutation<Comment, { productId: string; text: string; score: number }>({
       query: ({ productId, text, score }) => ({
-        url: `/comments/${productId}`,
+        url: `/products/${productId}/comments`,
         method: HttpMethod.POST,
         data: {
           productId,

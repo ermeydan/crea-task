@@ -1,3 +1,4 @@
+import { formatDate } from '@crea/ui/utils/date.utils';
 import { Divider, Group, Rating, Text, Title } from '@mantine/core';
 import React from 'react';
 
@@ -20,7 +21,7 @@ export function ProductComment({ score, username, text, date }: React.PropsWithC
       </Group>
 
       <Title order={6} mt={10} mb={10}>
-        {username} - {date}
+        {username} - <small>{formatDate(date)}</small>
       </Title>
 
       <Text fz="xs" fw={500}>
