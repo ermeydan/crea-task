@@ -76,7 +76,7 @@ export function ProductCard({ id, name, price, score, currency }: React.PropsWit
       </Card.Section>
 
       <Group position="apart" mt="lg">
-        <Text fw={500} fz="md">
+        <Text fw={700} fz="md">
           {name}
         </Text>
       </Group>
@@ -84,7 +84,7 @@ export function ProductCard({ id, name, price, score, currency }: React.PropsWit
       <Group spacing={5}>
         <Rating value={score} fractions={2} readOnly={true} />
         <Text fz="xs" fw={500}>
-          {score}
+          ({score})
         </Text>
       </Group>
 

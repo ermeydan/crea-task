@@ -20,7 +20,7 @@ export function LayoutHeader() {
         <Link to="/products">
           <CreaLogo height={35} />
         </Link>
-        <Button radius="xl" h={30} onClick={() => handleLogoutAction()}>
+        <Button radius="xl" color="red" h={30} onClick={() => handleLogoutAction()}>
           Logout
         </Button>
       </Container>

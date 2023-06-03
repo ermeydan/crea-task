@@ -63,7 +63,7 @@ export default function ProductDetails() {
             </Breadcrumbs>
           </Card>
 
-          <Grid mt={30}>
+          <Grid mt={10}>
             <Grid.Col span={6}>
               <ProductSlider images={imgs} />
             </Grid.Col>
@@ -95,22 +95,25 @@ export default function ProductDetails() {
 
                 <Divider my="sm" />
 
-                <Text>Price:</Text>
+                <Group>
+                  <Text>Price:</Text>
 
-                <Title c="orange" order={3} weight={900}>
-                  {renderPriceWithSymbol(product.currency, product.price)}
-                </Title>
+                  <Title c="orange" order={3} weight={900}>
+                    {renderPriceWithSymbol(product.currency, product.price)}
+                  </Title>
+                </Group>
 
-                <Text mt={20}>
-                  ETA{' '}
-                  <Tooltip label="Estimated Time of Arrival">
-                    <Kbd>?</Kbd>
-                  </Tooltip>{' '}
-                  :
-                </Text>
+                <Group>
+                  <Text>
+                    ETA{' '}
+                    <Tooltip label="Estimated Time of Arrival">
+                      <Kbd>?</Kbd>
+                    </Tooltip>{' '}
+                    :
+                  </Text>
 
-                <Text fw={500}>10.11.2222</Text>
-                <Divider my="sm" />
+                  <Text fw={500}>10.11.2222</Text>
+                </Group>
               </Stack>
             </Grid.Col>
           </Grid>

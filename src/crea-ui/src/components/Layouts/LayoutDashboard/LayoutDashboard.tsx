@@ -9,7 +9,7 @@ export function LayoutDashboard() {
       <LayoutHeader />
 
       <div className="page-dashboard-content">
-        <Container>
+        <Container className="page-dashboard-container">
           <Outlet />
         </Container>
       </div>

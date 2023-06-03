@@ -53,7 +53,7 @@ export function LeaveComment({ productId }: React.PropsWithChildren<LeaveComment
 
           <Group mb={20} mt={20}>
             <Input.Label>Rate your experience:</Input.Label>
-            <Rating value={rating} onChange={setRating} />
+            <Rating value={rating} onChange={setRating} />({rating})
           </Group>
 
           <Button disabled={isSubmitBtnDisabled} onClick={handleCommentSubmit} loading={isLoading}>

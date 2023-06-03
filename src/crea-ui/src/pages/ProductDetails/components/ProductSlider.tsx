@@ -4,7 +4,7 @@ import React from 'react';
 
 const useStyles = createStyles((theme) => ({
   price: {
-    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+    color: theme.black,
   },
 
   carousel: {
@@ -47,8 +47,8 @@ export function ProductSlider({ images }: React.PropsWithChildren<ProductSliderP
 
   return (
     <Carousel
-      slideSize="80%"
-      slideGap="md"
+      slideSize="85%"
+      slideGap="xs"
       withIndicators={true}
       loop={true}
       classNames={{
