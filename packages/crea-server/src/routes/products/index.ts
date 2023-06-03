@@ -18,14 +18,18 @@ const products: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   })
 
   fastify.get<{ Params: ProductParams }>('/:id', { onRequest: [fastify.authenticate] }, async function (request, reply) {
-    const { id } = request.params
-    const { products, comments } = fastify.db
-    const product: any = products.find(product => product.id === id)
-    const scores = comments.filter(c => c.productId === product.id).map(c => c.score)
-    const commentsCount = scores.length
-    let score = scores.reduce((a, b) => (a + b), 0)
-    score = score ? Math.round((score / commentsCount) * 2) / 2 : 0
-    reply.schema('detail').send({ ...product, score, commentsCount })
+    try {
+      const { id } = request.params
+      const { products, comments } = fastify.db
+      const product: any = products.find(product => product.id === id)
+      const scores = comments.filter(c => c.productId === product.id).map(c => c.score)
+      const commentsCount = scores.length
+      let score = scores.reduce((a, b) => (a + b), 0)
+      score = score ? Math.round((score / commentsCount) * 2) / 2 : 0
+      reply.schema('detail').send({ ...product, score, commentsCount })
+    } catch {
+      reply.notFound()
+    }
   })
 
   fastify.get<{ Params: ProductParams }>('/:id/comments', { onRequest: [fastify.authenticate] }, async function (request, reply) {

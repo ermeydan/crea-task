@@ -46,7 +46,7 @@ export default function ProductDetails() {
     <div className="page-product-details">
       <LoadingOverlay visible={isLoading} overlayBlur={2} />
 
-      {product && isSuccess && (
+      {(product && isSuccess) && (
         <>
           <Card padding="md" withBorder={true}>
             <Breadcrumbs>
