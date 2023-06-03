@@ -6,7 +6,9 @@ The project with an JWT authentication mechanism in which customers can login wi
 predefined username and password. After a successful login, the user redirect to the
 product list page. When a product is clicked, the user redirect to the product details
 page. In that page, users can comment to product.
-
+</br>
+`Seed Username: user` </br>
+`Seed Password: user123` </br>
 
 ### Requirements
 
