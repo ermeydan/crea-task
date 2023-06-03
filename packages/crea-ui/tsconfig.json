@@ -24,8 +24,7 @@
     "allowSyntheticDefaultImports": true,
 
     "paths": {
-      "@crea/ui/*": ["src/crea-ui/src/*"],
-      "@crea/server/*": ["src/crea-server/src/*"]
+      "@crea/ui/*": ["src/*"],
     }
   },
   "include": ["src"],

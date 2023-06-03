@@ -1,67 +1,10 @@
 {
-  "name": "atolye15",
+  "name": "root",
   "private": true,
-  "version": "0.0.0",
-  "engines": {
-    "npm": "please-use-yarn",
-    "node": ">= 18",
-    "yarn": ">= 3.5.0"
-  },
-  "scripts": {
-    "ui-dev": "vite --config ui.vite.config.ts",
-    "ui-build": "tsc && vite --config ui.vite.config.ts build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "ui-preview": "vite --config ui.vite.config.ts preview",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,md,json,scss}"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.10.8",
-    "@loadable/component": "^5.15.3",
-    "@mantine/carousel": "^6.0.13",
-    "@mantine/core": "^6.0.9",
-    "@mantine/hooks": "^6.0.9",
-    "@reduxjs/toolkit": "^1.9.5",
-    "@tabler/icons-react": "^2.20.0",
-    "axios": "^1.4.0",
-    "clsx": "^1.2.1",
-    "currency-symbol-map": "^5.1.0",
-    "date-fns": "^2.30.0",
-    "embla-carousel-react": "^8.0.0-rc06",
-    "formik": "^2.4.0",
-    "global": "^4.4.0",
-    "jwt-decode": "^3.1.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5",
-    "react-router-dom": "^6.11.2",
-    "react-use": "^17.4.0",
-    "redux-persist": "^6.0.0",
-    "redux-persist-transform-filter": "^0.0.22",
-    "svgo": "^3.0.2",
-    "ts-deepmerge": "^6.0.3",
-    "yup": "^1.2.0"
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
-    "@types/loadable__component": "^5.13.4",
-    "@types/node": "^18.16.2",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.57.1",
-    "@typescript-eslint/parser": "^5.57.1",
-    "@vitejs/plugin-react": "^4.0.0",
-    "eslint": "^8.38.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.3.4",
-    "eslint-plugin-unused-imports": "^2.0.0",
-    "prettier": "2.8.8",
-    "sass": "^1.62.1",
-    "typescript": "^5.0.2",
-    "vite": "^4.3.2",
-    "vite-tsconfig-paths": "^4.2.0"
-  },
-  "packageManager": "yarn@3.5.0"
+    "lerna": "^6.0.1"
+  }
 }
